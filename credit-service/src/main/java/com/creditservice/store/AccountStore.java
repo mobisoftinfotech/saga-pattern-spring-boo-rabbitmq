@@ -30,7 +30,7 @@ public class AccountStore {
 			double balance = getBalance(acct);
 			if (balance >= amount) {
 				double updated = balance - amount;
-				accounts.put(acct, updated);
+				updateBalance(acct, updated);
 				LOGGER.info("Debited {} from {}. New balance: {}", amount, acct, updated);
 				return true;
 			} else {
@@ -44,7 +44,7 @@ public class AccountStore {
 		synchronized (accounts) {
 			double balance = getBalance(acct);
 			double updated = balance + amount;
-			accounts.put(acct, updated);
+			updateBalance(acct, updated);
 			LOGGER.info("Credited {} to {}. New balance: {}", amount, acct, updated);
 		}
 	}

@@ -30,7 +30,8 @@ public class CreditEventHandler {
 
 		// Simulate a failure for a specific transferId "FAIL-CREDIT"
 		if ("FAIL-CREDIT".equals(event.getTransferId())) {
-			CreditFailed cf = new CreditFailed(event.getTransferId(), "Simulated credit failure");
+			CreditFailed cf = new CreditFailed(event.getTransferId(), "Simulated credit failure", event.getAmount(),
+					event.getFromAccount());
 			rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE, RabbitMQConfig.RK_CREDIT_FAILED, cf);
 			LOGGER.warn("Published CreditFailed: {}", cf);
 			return;

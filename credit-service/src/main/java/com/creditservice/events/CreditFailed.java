@@ -10,14 +10,20 @@ public class CreditFailed implements Serializable {
 
 	private String reason;
 
+	private double refundAmount;
+
+	private String refundAccount;
+
 	public CreditFailed() {
 		super();
 	}
 
-	public CreditFailed(String transferId, String reason) {
+	public CreditFailed(String transferId, String reason, double refundAmount, String refundAccount) {
 		super();
 		this.transferId = transferId;
 		this.reason = reason;
+		this.refundAmount = refundAmount;
+		this.refundAccount = refundAccount;
 	}
 
 	public String getTransferId() {
@@ -36,9 +42,26 @@ public class CreditFailed implements Serializable {
 		this.reason = reason;
 	}
 
+	public double getRefundAmount() {
+		return refundAmount;
+	}
+
+	public void setRefundAmount(double refundAmount) {
+		this.refundAmount = refundAmount;
+	}
+
+	public String getRefundAccount() {
+		return refundAccount;
+	}
+
+	public void setRefundAccount(String refundAccount) {
+		this.refundAccount = refundAccount;
+	}
+
 	@Override
 	public String toString() {
-		return "CreditFailed [transferId=" + transferId + ", reason=" + reason + "]";
+		return "CreditFailed [transferId=" + transferId + ", reason=" + reason + ", refundAmount=" + refundAmount
+				+ ", refundAccount=" + refundAccount + "]";
 	}
 
 }

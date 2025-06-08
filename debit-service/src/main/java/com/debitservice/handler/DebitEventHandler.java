@@ -48,9 +48,10 @@ public class DebitEventHandler {
 
 	@RabbitListener(queues = RabbitMQConfig.QUEUE_CREDIT_FAILED)
 	public void handleCreditFailed(CreditFailed event) {
-		LOGGER.warn("Received CreditFailed for transfer {}. Reason: {}. Refunding amount.", event.getTransferId(),
-				event.getReason());
-		accountStore.credit("A", 50.0);
-		LOGGER.info("Refunded 50.0 to account A. New balance: {}", accountStore.getBalance("A"));
+		LOGGER.warn("Received CreditFailed for transfer {}. Reason: {}. Refunding amount {}. To account {}.",
+				event.getTransferId(), event.getReason(), event.getRefundAmount(), event.getRefundAccount());
+		accountStore.credit(event.getRefundAccount(), event.getRefundAmount());
+		LOGGER.info("Refunded {} to account {}. New balance: {}", event.getRefundAmount(), event.getRefundAccount(),
+				accountStore.getBalance(event.getRefundAccount()));
 	}
 }
