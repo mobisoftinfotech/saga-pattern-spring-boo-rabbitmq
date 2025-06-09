@@ -12,13 +12,13 @@ public class TransferRequested implements Serializable {
 
 	private String toAccount;
 
-	private double amount;
+	private Double amount;
 
 	public TransferRequested() {
 		super();
 	}
 
-	public TransferRequested(String transferId, String fromAccount, String toAccount, double amount) {
+	public TransferRequested(String transferId, String fromAccount, String toAccount, Double amount) {
 		super();
 		this.transferId = transferId;
 		this.fromAccount = fromAccount;
@@ -50,11 +50,11 @@ public class TransferRequested implements Serializable {
 		this.toAccount = toAccount;
 	}
 
-	public double getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 

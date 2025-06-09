@@ -10,7 +10,7 @@ public class CreditFailed implements Serializable {
 
 	private String reason;
 
-	private double refundAmount;
+	private Double refundAmount;
 
 	private String refundAccount;
 
@@ -18,7 +18,7 @@ public class CreditFailed implements Serializable {
 		super();
 	}
 
-	public CreditFailed(String transferId, String reason, double refundAmount, String refundAccount) {
+	public CreditFailed(String transferId, String reason, Double refundAmount, String refundAccount) {
 		super();
 		this.transferId = transferId;
 		this.reason = reason;
@@ -42,11 +42,11 @@ public class CreditFailed implements Serializable {
 		this.reason = reason;
 	}
 
-	public double getRefundAmount() {
+	public Double getRefundAmount() {
 		return refundAmount;
 	}
 
-	public void setRefundAmount(double refundAmount) {
+	public void setRefundAmount(Double refundAmount) {
 		this.refundAmount = refundAmount;
 	}
 

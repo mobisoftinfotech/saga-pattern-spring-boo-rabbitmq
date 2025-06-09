@@ -10,13 +10,13 @@ public class CreditCompleted implements Serializable {
 
 	private String toAccount;
 
-	private double amount;
+	private Double amount;
 
 	public CreditCompleted() {
 		super();
 	}
 
-	public CreditCompleted(String transferId, String toAccount, double amount) {
+	public CreditCompleted(String transferId, String toAccount, Double amount) {
 		super();
 		this.transferId = transferId;
 		this.toAccount = toAccount;
@@ -39,11 +39,11 @@ public class CreditCompleted implements Serializable {
 		this.toAccount = toAccount;
 	}
 
-	public double getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 

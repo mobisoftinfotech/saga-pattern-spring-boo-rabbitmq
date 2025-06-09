@@ -16,20 +16,20 @@ public class AccountStore {
 		return accounts;
 	}
 
-	public double getBalance(String acct) {
+	public Double getBalance(String acct) {
 		return accounts.getOrDefault(acct, 0.0);
 	}
 
-	public void updateBalance(String acct, double newBal) {
+	public void updateBalance(String acct, Double newBal) {
 		LOGGER.info("Updating balance of {} to {}", acct, newBal);
 		accounts.put(acct, newBal);
 	}
 
-	public boolean debit(String acct, double amount) {
+	public boolean debit(String acct, Double amount) {
 		synchronized (accounts) {
-			double balance = getBalance(acct);
+			Double balance = getBalance(acct);
 			if (balance >= amount) {
-				double updated = balance - amount;
+				Double updated = balance - amount;
 				updateBalance(acct, updated);
 				LOGGER.info("Debited {} from {}. New balance: {}", amount, acct, updated);
 				return true;
@@ -40,10 +40,10 @@ public class AccountStore {
 		}
 	}
 
-	public void credit(String acct, double amount) {
+	public void credit(String acct, Double amount) {
 		synchronized (accounts) {
-			double balance = getBalance(acct);
-			double updated = balance + amount;
+			Double balance = getBalance(acct);
+			Double updated = balance + amount;
 			updateBalance(acct, updated);
 			LOGGER.info("Credited {} to {}. New balance: {}", amount, acct, updated);
 		}
